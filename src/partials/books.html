@@ -1,1 +1,68 @@
+<section id="books" class="books">
+  <div class="books-inner">
+    <h2 class="visually-hidden">Trending books</h2>
 
+    <div class="books-head">
+      <h3 class="books-title">Books</h3>
+      <p class="books-count">
+        Showing <span class="books-shown">0</span> of
+        <span class="books-total">0</span>
+      </p>
+    </div>
+
+    <!-- Фільтр: на mobile/tablet - випадаючий список, на desktop - список-меню -->
+
+    <div class="filter">
+      <button
+        class="filter-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="filter-list"
+      >
+        <span class="filter-toggle-text">Categories</span>
+        <svg class="filter-icon" width="24" height="24" aria-hidden="true">
+          <use href="/icons.svg#chevron-down"></use>
+        </svg>
+      </button>
+
+      <!-- JS: заповнює категоріями з бекенду, шаблон #filter-item-template -->
+      <ul class="filter-list" id="filter-list"></ul>
+    </div>
+
+    <ul class="books-list"></ul>
+
+    <!-- JS: показує кнопку, поки є книги для підвантаження -->
+    <button class="button button-primary books-more" type="button" hidden>
+      Show More
+    </button>
+  </div>
+</section>
+
+<!-- Шаблони для JS: клонуються  -->
+<template id="filter-item-template">
+  <li class="filter-item">
+    <button class="filter-button" type="button">Category</button>
+  </li>
+</template>
+
+<template id="book-card-template">
+  <li class="book-card">
+    <img
+      class="book-card-image"
+      src="./images/cover-placeholder.svg"
+      alt=""
+      width="300"
+      height="450"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="book-card-info">
+      <h4 class="book-card-title">Book title</h4>
+      <p class="book-card-author">Author</p>
+      <p class="book-card-price">$0</p>
+    </div>
+    <button class="button button-outline book-card-button" type="button">
+      Learn More
+    </button>
+  </li>
+</template>

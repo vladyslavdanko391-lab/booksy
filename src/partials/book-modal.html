@@ -1,0 +1,133 @@
+<dialog class="modal" aria-labelledby="modal-title">
+  <button class="modal-close" type="button" aria-label="Close modal">
+    <svg width="24" height="24" aria-hidden="true">
+      <use href="/icons.svg#x"></use>
+    </svg>
+  </button>
+
+  <div class="modal-content">
+    <div class="modal-product">
+      <img
+        class="modal-image"
+        src="./images/cover-placeholder.svg"
+        alt="I Will Find You book cover"
+        width="300"
+        height="450"
+      />
+    </div>
+
+    <div class="modal-column">
+      <div class="modal-summary">
+        <div class="modal-name">
+          <h2 class="modal-title" id="modal-title">I will find you</h2>
+          <p class="modal-author">Harlan Coben</p>
+          <p class="modal-price">$15</p>
+        </div>
+
+        <form class="modal-form">
+          <div class="quantity">
+            <button
+              class="quantity-button"
+              type="button"
+              aria-label="Decrease quantity"
+            >
+              -
+              <!-- <svg width="10" height="24" aria-hidden="true">
+                <use href="/icons.svg#minus"></use>
+              </svg> -->
+            </button>
+            <input
+              class="quantity-input"
+              type="number"
+              value="1"
+              min="1"
+              aria-label="Quantity"
+            />
+            <button
+              class="quantity-button"
+              type="button"
+              aria-label="Increase quantity"
+            >
+              +
+              <!-- <svg width="10" height="24" aria-hidden="true">
+                <use href="/icons.svg#plus"></use>
+              </svg> -->
+            </button>
+          </div>
+
+          <div class="modal-actions">
+            <button class="button button-primary" type="submit">
+              Add To Cart
+            </button>
+            <button class="button button-outline" type="button">Buy Now</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="accordion">
+        <details class="accordion-item">
+          <summary class="accordion-summary">
+            Details
+            <svg
+              class="accordion-icon"
+              width="20"
+              height="20"
+              aria-hidden="true"
+            >
+              <use href="/icons.svg#chevron-down"></use>
+            </svg>
+          </summary>
+          <!-- Текст приходить з бекенду -->
+          <p class="accordion-text modal-description">
+            I Will Find You is a gripping thriller by the master of suspense,
+            Harlan Coben. The story follows David Burroughs, a former prisoner
+            wrongfully convicted of murdering his own son. When he discovers a
+            clue suggesting his son might still be alive, David escapes from
+            prison to uncover the truth. Fast-paced, emotional, and full of
+            unexpected twists — this novel will keep you hooked until the very
+            last page.
+          </p>
+        </details>
+
+        <details class="accordion-item">
+          <summary class="accordion-summary">
+            Shipping
+            <svg
+              class="accordion-icon"
+              width="20"
+              height="20"
+              aria-hidden="true"
+            >
+              <use href="/icons.svg#chevron-down"></use>
+            </svg>
+          </summary>
+          <p class="accordion-text">
+            We ship across the United States within 2–5 business days. All
+            orders are processed through USPS or a reliable courier service.
+            Enjoy free standard shipping on orders over $50.
+          </p>
+        </details>
+
+        <details class="accordion-item">
+          <summary class="accordion-summary">
+            Returns
+            <svg
+              class="accordion-icon"
+              width="20"
+              height="20"
+              aria-hidden="true"
+            >
+              <use href="/icons.svg#chevron-down"></use>
+            </svg>
+          </summary>
+          <p class="accordion-text">
+            You can return an item within 14 days of receiving your order,
+            provided it hasn’t been used and is in its original condition. To
+            start a return, please contact our support team — we’ll guide you
+            through the process quickly and hassle-free.
+          </p>
+        </details>
+      </div>
+    </div>
+  </div>
+</dialog>

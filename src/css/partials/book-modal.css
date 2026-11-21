@@ -1,0 +1,270 @@
+/* Book Modal */
+
+body:has(.modal[open]) {
+  overflow: hidden;
+}
+
+/* Змінні блока*/
+.modal {
+  --color-bg: #fceee6;
+  --color-border: #1f1f1f;
+  --color-accent: #e05e00;
+  --color-accent-hover: #b84c00;
+  --color-field: #f1e1d9;
+  --color-divider: #dccfc8;
+  --radius-s: 4px;
+  --radius-m: 8px;
+  --radius-l: 16px;
+  --transition: 0.2s ease;
+
+  position: fixed;
+  margin: auto;
+  width: calc(100% - 24px);
+  max-width: 1300px;
+  max-height: calc(100dvh - 24px);
+  padding: 64px 16px;
+  overflow-y: auto;
+  color: inherit;
+  background-color: var(--color-bg);
+  border: 0;
+  border-radius: var(--radius-l);
+}
+
+.modal::backdrop {
+  background-color: rgb(0 0 0 / 40%);
+}
+
+.modal button:focus-visible,
+.modal input:focus-visible,
+.modal summary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Кнопки ---------- */
+
+.modal .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 24px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: inherit;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.modal .button-primary {
+  color: #ffffff;
+  background-color: var(--color-accent);
+  border: none;
+}
+
+.modal .button-primary:hover,
+.modal .button-primary:focus-visible {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.modal .button-outline:hover,
+.modal .button-outline:focus-visible {
+  color: #ffffff;
+  background-color: var(--color-border);
+}
+
+.modal-close {
+  color: inherit;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+.modal-close:hover {
+  opacity: 0.6;
+}
+
+.modal-content {
+  display: grid;
+  gap: 24px;
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-m);
+}
+
+.modal-name {
+  margin-bottom: 24px;
+}
+
+.modal-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.modal-author {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.modal-price {
+  margin-top: 8px;
+  font-size: 24px;
+}
+
+.modal-actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* ---------- Quantity ---------- */
+
+.quantity {
+  display: flex;
+  width: 122px;
+  gap: 8px;
+  align-items: center;
+}
+
+.quantity-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  width: 32px;
+  height: 40px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+.quantity-button:hover {
+  color: #ffffff;
+  background-color: var(--color-border);
+}
+
+.quantity-input {
+  width: 42px;
+  height: 40px;
+  padding: 0;
+  font-family: inherit;
+  font-size: 14px;
+  text-align: center;
+  background-color: var(--color-field);
+  border: 0;
+  border-radius: var(--radius-s);
+  appearance: textfield;
+}
+
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.modal-actions {
+  gap: 24px;
+}
+
+/* ---------- Accordion ---------- */
+
+.accordion {
+  margin-top: 32px;
+  border-top: 1px solid var(--color-divider);
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.accordion-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  font-size: 18px;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+
+.accordion-summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-icon {
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.accordion-item[open] .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-text {
+  padding-bottom: 24px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ---------- Tablet: from 768px ---------- */
+
+@media (min-width: 768px) {
+  .modal {
+    width: calc(100% - 64px);
+    padding: 64px 32px;
+  }
+
+  .modal-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+  }
+
+  .modal-image {
+    aspect-ratio: 2 / 3;
+  }
+}
+
+/* ---------- Desktop: from 1440px ---------- */
+
+@media (min-width: 1440px) {
+  .modal {
+    padding: 64px;
+  }
+
+  .modal-content {
+    grid-template-columns: 311px minmax(0, 1fr);
+  }
+
+  .modal-actions {
+    grid-template-columns: repeat(2, minmax(0, 313px));
+  }
+}

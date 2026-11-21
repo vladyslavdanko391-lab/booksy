@@ -1,0 +1,333 @@
+/* Books section (mobile first) */
+
+/* Змінні секції*/
+.books {
+  --color-border: #1f1f1f;
+  --color-accent: #e05e00;
+  --color-accent-hover: #b84c00;
+  --color-field: #f1e1d9;
+  --color-dropdown: #d4cfcb;
+  --color-dropdown-active: #c6c0bc;
+  --radius-s: 4px;
+  --radius-m: 8px;
+  --transition: 0.2s ease;
+
+  padding: 32px 16px;
+}
+
+/* Прихований заголовок "Trending books" (видно тільки скрінрідерам) */
+.books .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip-path: inset(50%);
+}
+
+/* Кнопка Show More ховається атрибутом hidden */
+.books .books-more[hidden] {
+  display: none;
+}
+
+.books button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Кнопки ---------- */
+
+.books .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 8px 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: inherit;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.books .button-primary {
+  color: #ffffff;
+  background-color: var(--color-accent);
+  border: none;
+}
+
+.books .button-primary:hover,
+.books .button-primary:focus-visible {
+  background-color: var(--color-accent-hover);
+}
+
+.books .button-outline:hover,
+.books .button-outline:focus-visible {
+  color: #ffffff;
+  background-color: var(--color-border);
+}
+
+.books-inner {
+  display: grid;
+  grid-template-areas:
+    'head'
+    'filter'
+    'list'
+    'more';
+  gap: 24px;
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.books-head {
+  display: flex;
+  grid-area: head;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.books-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.books-count {
+  font-size: 14px;
+}
+
+.books-list {
+  display: grid;
+  grid-area: list;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.books-message {
+  grid-column: 1 / -1;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.books-more {
+  grid-area: more;
+  width: 100%;
+}
+
+/* ---------- Filter ---------- */
+
+.filter {
+  position: relative;
+  grid-area: filter;
+}
+
+.filter-toggle {
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 18px;
+  text-align: left;
+  background-color: var(--color-field);
+  border: 0;
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.filter-toggle:hover {
+  background-color: var(--color-dropdown);
+}
+
+.filter-icon {
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.filter-toggle[aria-expanded='true'] .filter-icon {
+  transform: rotate(180deg);
+}
+
+.filter-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+  max-height: 304px;
+  overflow-y: auto;
+  background-color: var(--color-dropdown);
+  border: 1px solid var(--color-dropdown-active);
+  border-radius: var(--radius-m);
+  scrollbar-color: var(--color-accent) transparent;
+  scrollbar-width: thin;
+}
+
+.filter-toggle[aria-expanded='true'] + .filter-list {
+  display: block;
+}
+
+.filter-button {
+  color: inherit;
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: left;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.filter-button:hover,
+.filter-button-active {
+  background-color: var(--color-dropdown-active);
+}
+
+/* ---------- Book card ---------- */
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.book-card-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 7 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-m);
+}
+
+.book-card-info {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 8px;
+  align-items: baseline;
+}
+
+.book-card-title {
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
+.book-card-author {
+  grid-row: 2;
+  font-size: 14px;
+}
+
+.book-card-price {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.book-card-button {
+  width: 100%;
+}
+
+/* ---------- Tablet: from 768px ---------- */
+
+@media (min-width: 768px) {
+  .books {
+    padding: 32px 32px;
+  }
+
+  .books-inner {
+    grid-template-areas:
+      'head filter'
+      'list list'
+      'more more';
+    grid-template-columns: minmax(0, 1fr) 230px;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .books-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 24px;
+    margin-top: 16px;
+  }
+
+  .books-more {
+    justify-self: center;
+    width: 334px;
+    margin-top: 16px;
+  }
+}
+
+/* ---------- Desktop: from 1440px ---------- */
+
+@media (min-width: 1440px) {
+  .books {
+    padding: 64px 64px;
+  }
+
+  .books-inner {
+    grid-template-areas:
+      'head list'
+      'filter list'
+      '. more';
+    grid-template-columns: 300px minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    align-items: start;
+    gap: 24px;
+  }
+
+  .books-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 0;
+  }
+
+  /* Фільтр на desktop - постійно видимий список, без випадайки */
+  .filter-toggle {
+    display: none;
+  }
+
+  .filter-list {
+    position: static;
+    display: block;
+    max-height: none;
+    overflow: visible;
+    background: none;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .filter-button {
+    padding: 8px 0;
+    font-size: 18px;
+    background: none;
+  }
+
+  .filter-button:hover,
+  .filter-button-active {
+    font-weight: 500;
+    background: none;
+    color: var(--color-accent);
+  }
+}
